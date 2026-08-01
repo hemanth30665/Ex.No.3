@@ -117,10 +117,6 @@ A sentence with a blank is provided, and the model completes it — testing reca
 ---
 
 # Output
-
-### REG NUMBER: 212223030015
-### NAME: Janda Hemanth
-
 *Include your Screenshots Here (of prompts executed on the AI tool used):*
 - Screenshot 1: Straightforward Prompt outputs
 - Screenshot 2: Tabular Format Prompt outputs
