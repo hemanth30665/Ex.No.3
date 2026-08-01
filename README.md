@@ -3,8 +3,8 @@
 
 ---
 
-# Ex. No: 3
-# Date:03-08-2026
+# Ex.No: 3
+# Date: 03-08-2026
 
 # Scenario-Based Report Development Utilizing Diverse Prompting Techniques
 ### (Straightforward Prompts, Tabular Format Prompting, Missing Word Prompting, Preceding Question Prompting)
