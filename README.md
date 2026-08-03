@@ -3,169 +3,132 @@
 
 ---
 
-# Ex. No: 4
-# Date:03-08-2026
+# Ex.No: 3
+# Date: 03-08-2026
 
-# Advanced Prompt Engineering Techniques
+# Scenario-Based Report Development Utilizing Diverse Prompting Techniques
+### (Straightforward Prompts, Tabular Format Prompting, Missing Word Prompting, Preceding Question Prompting)
 
 ---
 
 # Aim
-To implement and evaluate advanced prompt engineering techniques — Zero-Shot Prompting, Few-Shot Prompting, Chain of Thought, Persona Pattern, Reverse Prompting, Graph Prompting, and Active Prompting — using engineering case studies (Smart Irrigation, Drone Navigation, Robot Path Planning), and to evaluate the outputs based on Reasoning, Correctness, and Token Usage.
+To write prompts for the following prompt engineering types and evaluate them using a chosen scenario/use case:
+1. Straightforward Prompts
+2. Tabular Format Prompting
+3. Preceding Question Prompting
+4. Missing Word Prompting
 
 ---
 
 # Problem Statement
-Advanced engineering problems often require an AI system to reason through multi-step logic, weigh trade-offs, and produce technically accurate outputs — not just retrieve simple facts. Different prompting techniques influence how well an AI model handles this complexity: some techniques improve reasoning depth, others improve output structure, and others reduce ambiguity by having the model ask clarifying questions itself. This experiment applies seven advanced prompting techniques to three real-world engineering case studies — Smart Irrigation Systems, Drone Navigation, and Robot Path Planning — to compare their effectiveness in terms of reasoning quality, correctness of the technical solution, and token (computational) efficiency.
+Prompt Engineering is the practice of designing effective inputs (prompts) to guide a Large Language Model (LLM) toward producing accurate, relevant, and well-structured outputs. Different prompting styles influence how the model interprets a request and structures its response. This experiment explores four fundamental prompt types — straightforward, tabular, preceding-question, and missing-word — and applies them to a real-world use case to compare their effectiveness in eliciting clear, useful, and well-organized information from an AI model.
+
+---
+
+# Use Case (Reference: Unit 5 – Real-World Application of Prompt Engineering)
+**Chosen Use Case: AI-Assisted Learning of Renewable Energy and Environmental Science Concepts**
+
+This use case involves a student using an AI assistant to learn foundational science concepts — such as electricity types, environmental issues, and biological processes — for exam preparation and general understanding. The four prompt types from Unit 2 are applied to this educational use case to demonstrate how different prompting strategies retrieve and structure the same underlying knowledge domain in different ways.
 
 ---
 
 # Algorithm / Procedure
 
-### Step 1: Select Engineering Case Studies
-- **Case Study 1:** Smart Irrigation System (sensor-based water management)
-- **Case Study 2:** Drone Navigation (autonomous flight path and obstacle avoidance)
-- **Case Study 3:** Robot Path Planning (shortest/safest path in a grid or dynamic environment)
+### Step 1: Straightforward Prompts
+Direct, unambiguous instructions are given to the model, requesting a specific, concise piece of information without additional structure or context.
 
-### Step 2: Define and Apply Each Prompting Technique
-Apply each of the seven techniques to the most suitable case study (as detailed below), recording the exact prompt and the generated response.
+**Prompt 1:** "Define photosynthesis in one sentence."
+**Prompt 2:** "List three advantages of electric vehicles."
 
-### Step 3: Record Token Usage
-- Count/estimate the number of input and output tokens for each prompt-response pair using the platform's usage metadata or a tokenizer tool.
-
-### Step 4: Evaluate Each Output
-- Rate each response on a 1–5 scale for **Reasoning** (depth/logical soundness), **Correctness** (technical accuracy), and note **Token Usage** (efficiency).
-
-### Step 5: Compare and Conclude
-- Tabulate results across all seven techniques and identify which technique(s) are best suited for which type of engineering problem.
+**Generated Output:**
+| Prompt | AI Response |
+|---|---|
+| Define photosynthesis in one sentence. | Photosynthesis is the process by which green plants use sunlight, water, and carbon dioxide to produce glucose and oxygen. |
+| List three advantages of electric vehicles. | 1. Zero tailpipe emissions, reducing air pollution. 2. Lower running costs due to cheaper electricity vs. fuel. 3. Reduced dependency on fossil fuels. |
 
 ---
 
-# Implementation
+### Step 2: Tabular Format Prompting
+The model is explicitly instructed to organize its response into a table, useful for comparisons or structured multi-attribute data.
 
-### 1. Zero-Shot Prompting
-**Case Study:** Smart Irrigation
-**Prompt:** "Design a basic smart irrigation system using soil moisture sensors. List the main components and how they interact."
+**Prompt 1:** "Compare and contrast AC and DC current in a table."
+**Prompt 2:** "Provide a table listing five programming languages, their paradigms, and one use case each."
 
-**Response (Summary):** A smart irrigation system typically includes a soil moisture sensor, a microcontroller (e.g., Arduino/ESP32), a water pump with relay control, and optionally a cloud dashboard. The sensor continuously monitors soil moisture; when it drops below a threshold, the microcontroller activates the relay to turn on the pump until moisture returns to the desired level.
+**Generated Output (Prompt 1):**
 
-**Observation:** Correct at a general level but lacks depth on edge cases (e.g., sensor calibration, weather integration).
-
----
-
-### 2. Few-Shot Prompting
-**Case Study:** Drone Navigation
-**Prompt:** "Example: For obstacle avoidance in a warehouse robot, we use LIDAR + a potential field algorithm to steer away from obstacles in real time. Now, using a similar style, explain how a drone can navigate and avoid obstacles indoors."
-
-**Response (Summary):** Following the same reasoning pattern, an indoor drone can use a combination of ultrasonic/LIDAR sensors and a potential field algorithm, where obstacles generate repulsive forces and the goal generates an attractive force, guiding the drone along a collision-free path while adjusting altitude for 3D obstacles like shelves or beams.
-
-**Observation:** The example primed the model to produce a more analogous, technically consistent answer than zero-shot alone.
-
----
-
-### 3. Chain of Thought (CoT)
-**Case Study:** Robot Path Planning
-**Prompt:** "A robot needs to move from point A to point B in a grid with obstacles. Think step-by-step: first identify possible pathfinding algorithms, then explain why one is best suited, then describe how it would be implemented."
-
-**Response (Summary):**
-*Step 1:* Candidate algorithms — BFS, Dijkstra's, A* Search.
-*Step 2:* A* is best suited because it uses a heuristic (e.g., Manhattan distance) to prioritize promising paths, making it faster than BFS/Dijkstra's for grid-based navigation with known goal coordinates.
-*Step 3:* Implementation — represent the grid as nodes, assign cost `g(n)` from start and heuristic `h(n)` to goal, expand nodes in order of `f(n) = g(n) + h(n)`, and backtrack from the goal once reached to reconstruct the path.
-
-**Observation:** Strongest reasoning depth; clearly justified the algorithm choice before implementation.
-
----
-
-### 4. Persona Pattern
-**Case Study:** Smart Irrigation
-**Prompt:** "You are a senior agricultural IoT engineer. Explain to a farmer with no technical background how a smart irrigation system saves water, in simple, non-technical language."
-
-**Response (Summary):** "Think of it like a system that constantly checks how thirsty your soil is. Instead of watering on a fixed schedule, it only turns on the water when the soil actually needs it — so you're not wasting water on rainy days or over-watering when it's not needed. Over time, this can cut water usage significantly while keeping your crops healthy."
-
-**Observation:** Highest simplicity/user-experience score; ideal for non-technical stakeholders, though technical depth was intentionally reduced.
-
----
-
-### 5. Reverse Prompting
-**Case Study:** Drone Navigation
-**Prompt:** "I want to design an autonomous drone navigation system, but before answering, ask me any clarifying questions you need about the environment, payload, and constraints."
-
-**Response (Summary):** The model responded with clarifying questions such as: "Will the drone operate indoors or outdoors? What sensors are available (GPS, LIDAR, camera)? What is the maximum flight time/battery capacity? Are there dynamic (moving) obstacles to avoid?" — before proceeding to a tailored design once these were answered.
-
-**Observation:** Reduced ambiguity significantly; particularly useful for underspecified engineering requirements, though it added an extra interaction round (higher token usage overall).
-
----
-
-### 6. Graph Prompting
-**Case Study:** Robot Path Planning
-**Prompt:** "Represent the robot's environment as a graph: nodes are grid cells, edges connect walkable neighboring cells with a cost of 1, and obstacles have no edges. Using this graph representation, explain how Dijkstra's algorithm finds the shortest path from node A to node B."
-
-**Response (Summary):** The model described the grid as a weighted graph `G = (V, E)`, where each node's shortest distance from the start is initialized to infinity except the start node (0). It then explained the iterative relaxation process: repeatedly selecting the unvisited node with the smallest tentative distance, updating its neighbors' distances, and marking it visited, until the goal node is reached — producing the shortest path via backtracking through recorded predecessors.
-
-**Observation:** Explicit graph framing improved structural precision and made the algorithmic explanation more rigorous and implementation-ready.
-
----
-
-### 7. Active Prompting
-**Case Study:** Smart Irrigation
-**Prompt:** "Here are three possible irrigation control strategies: (1) fixed schedule, (2) threshold-based sensor control, (3) predictive ML-based control using weather forecasts. Rank these by water efficiency, explain your uncertainty for each ranking, and ask me if you need real deployment data to refine the ranking."
-
-**Response (Summary):** The model ranked: (1) Predictive ML-based control — highest efficiency but highest uncertainty without real data; (2) Threshold-based sensor control — moderately efficient, low uncertainty; (3) Fixed schedule — least efficient, well understood. It then asked whether local rainfall data or crop-specific water requirements were available to refine the ranking further.
-
-**Observation:** Actively flagged uncertainty and requested the most informative missing data — well suited for decision-support scenarios with incomplete information.
-
----
-
-# Evaluation Table
-
-| Technique | Case Study | Reasoning (1–5) | Correctness (1–5) | Token Usage (Approx.) | Notes |
-|---|---|---|---|---|---|
-| Zero-Shot | Smart Irrigation | 3 | 4 | Low (~120 tokens) | Fast but shallow |
-| Few-Shot | Drone Navigation | 4 | 4 | Medium (~200 tokens) | Better stylistic/technical consistency |
-| Chain of Thought | Robot Path Planning | 5 | 5 | High (~320 tokens) | Best reasoning depth, justified choices |
-| Persona Pattern | Smart Irrigation | 3 | 4 | Low (~140 tokens) | Best for non-technical communication |
-| Reverse Prompting | Drone Navigation | 4 | 5 | High (~350 tokens, multi-turn) | Reduces ambiguity, costs extra turns |
-| Graph Prompting | Robot Path Planning | 5 | 5 | Medium-High (~280 tokens) | Most structurally rigorous |
-| Active Prompting | Smart Irrigation | 4 | 4 | Medium (~230 tokens) | Good uncertainty handling |
-
-*(Token counts are illustrative approximations for demonstration; actual values should be measured using the target platform's tokenizer/usage metadata.)*
-
----
-
-# Comparison of Techniques
-
-| Technique | Best Suited For | Trade-off |
+| Feature | AC (Alternating Current) | DC (Direct Current) |
 |---|---|---|
-| Zero-Shot | Quick, well-known technical queries | Limited depth for complex/multi-step problems |
-| Few-Shot | Maintaining consistent style/format | Requires good example curation |
-| Chain of Thought | Multi-step algorithmic/engineering reasoning | Higher token usage, longer responses |
-| Persona Pattern | Communicating technical content to non-experts | May sacrifice technical precision |
-| Reverse Prompting | Underspecified or ambiguous requirements | Extra interaction rounds increase cost |
-| Graph Prompting | Structured/relational problems (pathfinding, networks) | Requires the problem to be graph-representable |
-| Active Prompting | Decision-making under uncertainty | Needs follow-up data to fully resolve rankings |
+| Direction of flow | Reverses periodically | Flows in one direction |
+| Source | Power plants, generators | Batteries, solar cells |
+| Transmission | Efficient over long distances | Efficient over short distances |
+| Common use | Household electricity | Electronic devices, batteries |
+
+**Generated Output (Prompt 2):**
+
+| Language | Paradigm | Use Case |
+|---|---|---|
+| Python | Multi-paradigm (OOP, procedural) | Data science and AI |
+| Java | Object-oriented | Enterprise applications |
+| JavaScript | Event-driven, functional | Web development |
+| Haskell | Functional | Academic/research computing |
+| C | Procedural | Systems/embedded programming |
+
+---
+
+### Step 3: Preceding Question Prompting
+A guiding question precedes the main instruction, priming the model with context before asking it to elaborate — often producing richer, more explanatory answers.
+
+**Prompt 1:** "Why is climate change a global concern? Explain how greenhouse gases contribute to global warming."
+**Prompt 2:** "How do vaccines work? Describe the process of immunization in simple terms."
+
+**Generated Output:**
+
+*Prompt 1 Response:*
+Climate change is a global concern because rising temperatures disrupt ecosystems, agriculture, sea levels, and weather patterns worldwide, affecting every country regardless of its contribution to emissions. Greenhouse gases such as carbon dioxide and methane trap heat in the Earth's atmosphere by absorbing infrared radiation that would otherwise escape into space, causing a gradual warming effect known as the greenhouse effect.
+
+*Prompt 2 Response:*
+Vaccines work by training the immune system to recognize and fight specific pathogens without causing the actual disease. Immunization introduces a weakened, inactivated, or partial form of a pathogen (or genetic instructions to build part of it) into the body, prompting the immune system to produce antibodies. If the real pathogen is encountered later, the immune system can respond quickly and effectively, preventing illness.
+
+---
+
+### Step 4: Missing Word Prompting
+A sentence with a blank is provided, and the model completes it — testing recall of specific facts within a fixed context.
+
+**Prompt 1:** "The capital of France is ____."
+**Prompt 2:** "In photosynthesis, plants absorb sunlight to produce ____."
+
+**Generated Output:**
+| Prompt | Completed Response |
+|---|---|
+| The capital of France is ____. | The capital of France is **Paris**. |
+| In photosynthesis, plants absorb sunlight to produce ____. | In photosynthesis, plants absorb sunlight to produce **glucose (and oxygen)**. |
+
+---
+
+# Evaluation / Comparison
+
+| Prompt Type | Best For | Strength | Limitation |
+|---|---|---|---|
+| Straightforward Prompts | Quick facts, definitions, short lists | Fast, unambiguous, easy to write | Limited structure/depth for complex topics |
+| Tabular Format Prompting | Comparisons, multi-attribute data | Highly readable, organizes complex data clearly | Not suited for narrative/explanatory answers |
+| Preceding Question Prompting | Conceptual understanding, reasoning | Produces richer, context-aware explanations | Slightly longer, less concise responses |
+| Missing Word Prompting | Fact recall, fill-in-the-blank testing | Very precise, good for quizzes/assessment | Not suitable for open-ended or complex queries |
 
 ---
 
 # Output
-
-### REG NUMBER: 212223030015
-### NAME: Janda Hemanth
-
-*Include your Screenshots Here:*
-- Screenshot 1: Zero-Shot & Few-Shot prompt outputs
-- Screenshot 2: Chain of Thought reasoning trace
-- Screenshot 3: Persona Pattern response
-- Screenshot 4: Reverse Prompting clarifying-question exchange
-- Screenshot 5: Graph Prompting structured explanation
-- Screenshot 6: Active Prompting ranking with uncertainty
-- Screenshot 7: Token usage panel/metadata from the AI platform
+*Include your Screenshots Here (of prompts executed on the AI tool used):*
+- Screenshot 1: Straightforward Prompt outputs
+- Screenshot 2: Tabular Format Prompt outputs
+- Screenshot 3: Preceding Question Prompt outputs
+- Screenshot 4: Missing Word Prompt outputs
 
 ---
 
 # Conclusion
-Seven advanced prompting techniques were implemented across three engineering case studies — Smart Irrigation, Drone Navigation, and Robot Path Planning. **Chain of Thought** and **Graph Prompting** produced the strongest reasoning and correctness for algorithmically structured problems like path planning, at the cost of higher token usage. **Reverse Prompting** proved most effective at resolving ambiguous requirements before generating a solution, while **Active Prompting** was most useful for ranking options under uncertainty. **Persona Pattern** excelled at simplifying technical content for non-expert audiences, and **Zero-Shot**/**Few-Shot** remained the most token-efficient choices for straightforward technical queries. This confirms that technique selection should be guided by the nature of the engineering problem — favoring reasoning-heavy techniques for complex algorithmic tasks and lighter techniques for simple, well-defined queries.
+The four prompting techniques — Straightforward, Tabular Format, Preceding Question, and Missing Word Prompting — were applied to a common educational use case (renewable energy and environmental science concepts). Each technique demonstrated a distinct strength: straightforward prompts delivered concise facts, tabular prompts organized comparative data clearly, preceding-question prompts elicited deeper conceptual explanations, and missing-word prompts tested precise factual recall. This confirms that selecting the appropriate prompting style based on the nature of the required output significantly improves the quality, clarity, and usefulness of AI-generated responses.
 
 ---
 
 # Result
-Thus, the advanced prompt engineering techniques — Zero-Shot, Few-Shot, Chain of Thought, Persona Pattern, Reverse Prompting, Graph Prompting, and Active Prompting — were successfully implemented on engineering case studies and evaluated in terms of Reasoning, Correctness, and Token Usage.
+Thus, the prompts for Straightforward, Tabular Format, Preceding Question, and Missing Word Prompting types were written, executed, and evaluated successfully using the chosen use case, and the report was generated accordingly.
