@@ -1,134 +1,149 @@
-## Name: Janda Hemanth
-## Reg No: 212223030015
+# Ex.No.3 — Scenario-Based Report Development Utilizing Diverse Prompting Techniques
+
+**NAME:** JANDA HEMANTH
+
+**REGISTER NUMBER:** 212223030015
+
+**DATE:** \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 ---
 
-# Ex.No: 3
-# Date: 03-08-2026
+## Aim
 
-# Scenario-Based Report Development Utilizing Diverse Prompting Techniques
-### (Straightforward Prompts, Tabular Format Prompting, Missing Word Prompting, Preceding Question Prompting)
+To write prompts for four prompt engineering types — **Straightforward Prompts, Tabular Format Prompting, Preceding Question Prompting, and Missing Word Prompting** — and evaluate them using a rubric-based method; and to apply these same techniques to design an AI-powered customer service chatbot that assists with product troubleshooting, order tracking, and general inquiries in a conversational, user-friendly tone.
 
 ---
 
-# Aim
-To write prompts for the following prompt engineering types and evaluate them using a chosen scenario/use case:
-1. Straightforward Prompts
-2. Tabular Format Prompting
-3. Preceding Question Prompting
-4. Missing Word Prompting
+## Use Case (from Unit 5)
+
+**Scenario:** An AI-powered customer service chatbot for an e-commerce platform, designed to:
+- Resolve **product troubleshooting** queries.
+- Provide **order tracking** updates.
+- Answer **general inquiries** (returns, payment, shipping policy, etc.)
+- Maintain a **conversational, user-friendly tone** throughout.
+
+All four prompt types below are applied specifically to designing and testing this chatbot.
 
 ---
 
-# Problem Statement
-Prompt Engineering is the practice of designing effective inputs (prompts) to guide a Large Language Model (LLM) toward producing accurate, relevant, and well-structured outputs. Different prompting styles influence how the model interprets a request and structures its response. This experiment explores four fundamental prompt types — straightforward, tabular, preceding-question, and missing-word — and applies them to a real-world use case to compare their effectiveness in eliciting clear, useful, and well-organized information from an AI model.
+## Procedure
+
+1. Understand each of the four prompt engineering types.
+2. Write example prompts of each type tailored to the chatbot design use case.
+3. Record the AI-generated output for each prompt.
+4. Evaluate all four techniques using a rubric across Clarity, Specificity, Usefulness for Design, and Response Quality.
+5. Summarize which technique suited which part of the chatbot design process.
 
 ---
 
-# Use Case (Reference: Unit 5 – Real-World Application of Prompt Engineering)
-**Chosen Use Case: AI-Assisted Learning of Renewable Energy and Environmental Science Concepts**
+## 1. Straightforward Prompts
 
-This use case involves a student using an AI assistant to learn foundational science concepts — such as electricity types, environmental issues, and biological processes — for exam preparation and general understanding. The four prompt types from Unit 2 are applied to this educational use case to demonstrate how different prompting strategies retrieve and structure the same underlying knowledge domain in different ways.
+**Definition:** Direct, simple, single-intent prompts with no special structure — best for quick facts or short lists.
 
----
+**Prompt 1:** "List three common customer issues an e-commerce chatbot should be able to handle."
 
-# Algorithm / Procedure
+**Sample Output:**
+> 1. Delayed or missing order delivery.
+> 2. Product not working as expected / troubleshooting help.
+> 3. Refund or return status inquiries.
 
-### Step 1: Straightforward Prompts
-Direct, unambiguous instructions are given to the model, requesting a specific, concise piece of information without additional structure or context.
+**Prompt 2:** "Define 'order tracking' in one sentence, the way a chatbot would explain it to a customer."
 
-**Prompt 1:** "Define photosynthesis in one sentence."
-**Prompt 2:** "List three advantages of electric vehicles."
-
-**Generated Output:**
-| Prompt | AI Response |
-|---|---|
-| Define photosynthesis in one sentence. | Photosynthesis is the process by which green plants use sunlight, water, and carbon dioxide to produce glucose and oxygen. |
-| List three advantages of electric vehicles. | 1. Zero tailpipe emissions, reducing air pollution. 2. Lower running costs due to cheaper electricity vs. fuel. 3. Reduced dependency on fossil fuels. |
+**Sample Output:**
+> "Order tracking lets you check the current status and estimated delivery date of your order using your order ID or tracking number."
 
 ---
 
-### Step 2: Tabular Format Prompting
-The model is explicitly instructed to organize its response into a table, useful for comparisons or structured multi-attribute data.
+## 2. Tabular Format Prompting
 
-**Prompt 1:** "Compare and contrast AC and DC current in a table."
-**Prompt 2:** "Provide a table listing five programming languages, their paradigms, and one use case each."
+**Definition:** Prompts that explicitly request a table structure — ideal for comparisons or organizing multiple related items.
 
-**Generated Output (Prompt 1):**
+**Prompt 1:** "Provide a table listing five chatbot intents for an e-commerce customer service bot, an example user query for each, and the chatbot's ideal response type."
 
-| Feature | AC (Alternating Current) | DC (Direct Current) |
+**Sample Output:**
+
+| Intent | Example User Query | Ideal Response Type |
 |---|---|---|
-| Direction of flow | Reverses periodically | Flows in one direction |
-| Source | Power plants, generators | Batteries, solar cells |
-| Transmission | Efficient over long distances | Efficient over short distances |
-| Common use | Household electricity | Electronic devices, batteries |
+| Order Tracking | "Where is my order #12345?" | Real-time status with estimated delivery date |
+| Product Troubleshooting | "My headphones won't pair." | Step-by-step guided troubleshooting |
+| Return/Refund | "How do I return this item?" | Policy summary + return process link |
+| Payment Issue | "My payment failed twice." | Reassurance + escalation to payment support |
+| General Inquiry | "What are your store hours?" | Direct factual answer |
 
-**Generated Output (Prompt 2):**
+**Prompt 2:** "Compare rule-based chatbots and LLM-based chatbots in a table across cost, flexibility, and accuracy for customer service use."
 
-| Language | Paradigm | Use Case |
+**Sample Output:**
+
+| Aspect | Rule-Based Chatbot | LLM-Based Chatbot |
 |---|---|---|
-| Python | Multi-paradigm (OOP, procedural) | Data science and AI |
-| Java | Object-oriented | Enterprise applications |
-| JavaScript | Event-driven, functional | Web development |
-| Haskell | Functional | Academic/research computing |
-| C | Procedural | Systems/embedded programming |
+| Cost | Lower ongoing cost, cheaper to build | Higher API/compute cost |
+| Flexibility | Limited to predefined intents/flows | Handles unexpected/complex phrasing well |
+| Accuracy | High for narrow, well-defined tasks | High for broad understanding, needs guardrails for factual accuracy |
 
 ---
 
-### Step 3: Preceding Question Prompting
-A guiding question precedes the main instruction, priming the model with context before asking it to elaborate — often producing richer, more explanatory answers.
+## 3. Preceding Question Prompting
 
-**Prompt 1:** "Why is climate change a global concern? Explain how greenhouse gases contribute to global warming."
-**Prompt 2:** "How do vaccines work? Describe the process of immunization in simple terms."
+**Definition:** A prompt structured as a lead-in question followed by a request to explain — useful for generating reasoned, explanatory content rather than a flat list.
 
-**Generated Output:**
+**Prompt 1:** "Why do customers abandon chat conversations with a bot? Explain how a chatbot's tone and response time affect user satisfaction."
 
-*Prompt 1 Response:*
-Climate change is a global concern because rising temperatures disrupt ecosystems, agriculture, sea levels, and weather patterns worldwide, affecting every country regardless of its contribution to emissions. Greenhouse gases such as carbon dioxide and methane trap heat in the Earth's atmosphere by absorbing infrared radiation that would otherwise escape into space, causing a gradual warming effect known as the greenhouse effect.
+**Sample Output:**
+> Customers often abandon chatbot conversations when responses feel robotic, repetitive, or too slow. A conversational, empathetic tone reduces frustration by making the interaction feel human-like, while fast response time keeps momentum in the conversation — even a few seconds of delay can cause users to disengage, especially for time-sensitive queries like order tracking.
 
-*Prompt 2 Response:*
-Vaccines work by training the immune system to recognize and fight specific pathogens without causing the actual disease. Immunization introduces a weakened, inactivated, or partial form of a pathogen (or genetic instructions to build part of it) into the body, prompting the immune system to produce antibodies. If the real pathogen is encountered later, the immune system can respond quickly and effectively, preventing illness.
+**Prompt 2:** "How does a chatbot resolve an order tracking query? Describe the step-by-step process from user query to order status response."
 
----
-
-### Step 4: Missing Word Prompting
-A sentence with a blank is provided, and the model completes it — testing recall of specific facts within a fixed context.
-
-**Prompt 1:** "The capital of France is ____."
-**Prompt 2:** "In photosynthesis, plants absorb sunlight to produce ____."
-
-**Generated Output:**
-| Prompt | Completed Response |
-|---|---|
-| The capital of France is ____. | The capital of France is **Paris**. |
-| In photosynthesis, plants absorb sunlight to produce ____. | In photosynthesis, plants absorb sunlight to produce **glucose (and oxygen)**. |
+**Sample Output:**
+> 1. The chatbot detects the "order tracking" intent from the user's message.
+> 2. It requests the order ID or associates the query with the logged-in user's account.
+> 3. It queries the order management system/API for the current status.
+> 4. It formats the raw status data into a friendly, conversational reply.
+> 5. It offers a follow-up action, such as "Would you like delivery notifications?"
 
 ---
 
-# Evaluation / Comparison
+## 4. Missing Word Prompting
 
-| Prompt Type | Best For | Strength | Limitation |
-|---|---|---|---|
-| Straightforward Prompts | Quick facts, definitions, short lists | Fast, unambiguous, easy to write | Limited structure/depth for complex topics |
-| Tabular Format Prompting | Comparisons, multi-attribute data | Highly readable, organizes complex data clearly | Not suited for narrative/explanatory answers |
-| Preceding Question Prompting | Conceptual understanding, reasoning | Produces richer, context-aware explanations | Slightly longer, less concise responses |
-| Missing Word Prompting | Fact recall, fill-in-the-blank testing | Very precise, good for quizzes/assessment | Not suitable for open-ended or complex queries |
+**Definition:** A fill-in-the-blank style prompt that constrains the AI to produce a specific, targeted piece of information.
 
----
+**Prompt 1:** "When a customer asks about a delayed order, the chatbot should first ____ before providing an update."
 
-# Output
-*Include your Screenshots Here (of prompts executed on the AI tool used):*
-- Screenshot 1: Straightforward Prompt outputs
-- Screenshot 2: Tabular Format Prompt outputs
-- Screenshot 3: Preceding Question Prompt outputs
-- Screenshot 4: Missing Word Prompt outputs
+**Sample Output:**
+> "...acknowledge the inconvenience and apologize for the delay..."
+
+**Prompt 2:** "A good troubleshooting chatbot response should be ____, ____, and ____."
+
+**Sample Output:**
+> "...clear, concise, and empathetic."
 
 ---
 
-# Conclusion
-The four prompting techniques — Straightforward, Tabular Format, Preceding Question, and Missing Word Prompting — were applied to a common educational use case (renewable energy and environmental science concepts). Each technique demonstrated a distinct strength: straightforward prompts delivered concise facts, tabular prompts organized comparative data clearly, preceding-question prompts elicited deeper conceptual explanations, and missing-word prompts tested precise factual recall. This confirms that selecting the appropriate prompting style based on the nature of the required output significantly improves the quality, clarity, and usefulness of AI-generated responses.
+## Evaluation (Rubric-Based Method)
+
+Each technique was scored 1–5 on four criteria, based on its usefulness specifically for **chatbot design work**.
+
+| Prompt Type | Clarity | Specificity | Usefulness for Design | Response Quality | Total (/20) |
+|---|---|---|---|---|---|
+| Straightforward Prompts | 5 | 3 | 3 | 4 | 15 |
+| Tabular Format Prompting | 5 | 5 | 5 | 5 | 20 |
+| Preceding Question Prompting | 4 | 4 | 4 | 5 | 17 |
+| Missing Word Prompting | 4 | 5 | 3 | 3 | 15 |
+
+### Observations
+
+- **Tabular Format Prompting** scored highest overall — organizing chatbot intents, example queries, and response types into a table was directly usable as a design artifact (an intent-response map), not just descriptive text.
+- **Preceding Question Prompting** was most useful for understanding *why* certain chatbot behaviors matter (tone, response time) and for documenting a *process* (the order-tracking resolution flow) — valuable for writing design rationale and technical documentation.
+- **Straightforward Prompts** were fast and clear but too shallow to drive actual design decisions on their own — useful mainly for quick fact-checks or brainstorming seed ideas.
+- **Missing Word Prompting** was effective for extracting very specific, constrained answers (e.g., the three qualities of a good response) but too narrow to use for open-ended design exploration — best used to pin down a specific detail once the broader design is already in place.
 
 ---
 
-# Result
-Thus, the prompts for Straightforward, Tabular Format, Preceding Question, and Missing Word Prompting types were written, executed, and evaluated successfully using the chosen use case, and the report was generated accordingly.
+## Conclusion
+
+Applying Straightforward, Tabular Format, Preceding Question, and Missing Word prompting to the design of an AI-powered customer service chatbot showed that different prompt types serve distinct roles in a real design workflow: Tabular Format Prompting was best for organizing structured design artifacts (intent-response tables, comparisons), Preceding Question Prompting was best for generating design rationale and process explanations, Straightforward Prompts were best for quick fact retrieval, and Missing Word Prompting was best for pinning down specific, constrained details. Using the right prompt type for the right sub-task produced more useful, directly applicable outputs than relying on a single prompting style throughout.
+
+---
+
+## Result
+
+The prompts for all four prompt engineering types — Straightforward, Tabular Format, Preceding Question, and Missing Word Prompting — were written, executed, and evaluated successfully for the AI-powered customer service chatbot use case (product troubleshooting, order tracking, and general inquiries), with Tabular Format Prompting scoring highest overall for chatbot design work under the rubric evaluation used.
