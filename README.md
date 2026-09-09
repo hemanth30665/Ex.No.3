@@ -13,7 +13,7 @@ To write prompts for four prompt engineering types — **Straightforward Prompts
 
 ---
 
-## Use Case (from Unit 5)
+## Use Case 
 
 **Scenario:** An AI-powered customer service chatbot for an e-commerce platform, designed to:
 - Resolve **product troubleshooting** queries.
